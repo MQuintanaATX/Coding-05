@@ -1,0 +1,9 @@
+#Ignore all
+*
+
+#UnIgnore Directories
+!*/
+
+#UnIgnore source code
+!*.cpp
+!*.h
