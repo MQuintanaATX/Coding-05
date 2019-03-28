@@ -1,5 +1,8 @@
-//
-// Created by Michael Quintana on 2019-03-27.
-//
+/* ************************************************************************
+Name: Michael Quintana
+Assignment: Coding 05 - Hash Tables
+Purpose: Implementation - main
+Notes: Implementation file for functions used in the main driver
+************************************************************************ */
 
 #include "Functions.h"
