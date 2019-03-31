@@ -35,6 +35,33 @@ int main (int argc,char** argv) {
         cout << "An error occured. Unable to determmine amount of lines..";
         return 0;
     }
+    filename.clear();
+    filename.seekg(0);
+
+    cout << " > Now loading data into hash table" << endl;
+    int counter;
+    while (!filename.eof()) {
+        string fileString, container; // Container is used to parse data
+        int id;
+        string data;
+        getline(filename, fileString);
+        if (fileString == "\0"){ // checks for a blank line, and skips parsing if that's the csae
+            continue;
+        }
+        for (int i = 0; i < fileString.size(); i++) {
+            if (fileString[i] != ',') {
+                container += fileString[i];
+                continue;
+            } else if (fileString[i] == ','){
+                id = stoi(container);
+                container = "";
+            } else if(fileString[i] == '\0'){
+                data = container;
+            }
+        }
+        cout << id << ", " << container << endl;
+
+    }
 
     cout << endl << "******Ending Coding 05 - Hash Tables******" << endl;
     return 0;

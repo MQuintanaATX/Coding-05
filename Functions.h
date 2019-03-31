@@ -14,4 +14,5 @@ using namespace std;
 
 int countLines(ifstream&); //Counts the number of lines. Handles white spaces, etc.
 
+
 #endif //CODING_05_FUNCTIONS_H

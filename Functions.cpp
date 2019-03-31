@@ -7,7 +7,7 @@ Notes: Implementation file for functions used in the main driver
 
 #include "Functions.h"
 
-int countLines(ifstream& filename) {
+int countLines(ifstream& filename) { // Obtains # of valid lines in a file
     int count = 0;
     //Holds the contents of the file while reading
     string contents;
