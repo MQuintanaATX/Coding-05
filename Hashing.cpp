@@ -14,3 +14,7 @@ bool Hashing::isEmpty() { //checks to see if the hash table is empty
     }
     return true;
 }
+
+bool Hashing::add(int id, string data) { //adds entries to the able
+    return true;
+}

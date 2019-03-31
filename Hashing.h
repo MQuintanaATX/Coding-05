@@ -25,7 +25,7 @@ private:
     Node* hashtable[19];
 public:
     bool isEmpty();
-
+    bool add(int, string);
 };
 
 

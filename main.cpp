@@ -7,7 +7,7 @@ Notes: Implementation file serving as the main driver for the program
 #include "main.h"
 
 int main (int argc,char** argv) {
-    cout << "******Beginning Coding 05 - Hash Tables******"
+    cout << "******Beginning Coding 05 - Hash Tables******";
     /*Handles the initial parameters passed in*/
     if (argc != 2) { //Checks for additional arguments that are not intended
         cout <<  "You have specified too many or too few arguments. Please try again.";
@@ -21,11 +21,21 @@ int main (int argc,char** argv) {
     if (!filename) {
         cout << "There is no file named : " << userInput << ". Please check for the file, and try again." << endl;
     }
-    Hashing table;
+    Hashing table; //The hash table
+    int lineCount = 0; //holds the tally of lines in the file
     cout << boolalpha;
     cout << "table.isEmpty - ";
     cout << table.isEmpty();
-    cout << endl;
-    cout << "******Ending Coding 05 - Hash Tables******" << endl;
+    cout << endl << "> Number of table entries | ";
+    try {
+        lineCount = countLines(filename);
+        cout << lineCount;
+    }
+    catch (...){
+        cout << "An error occured. Unable to determmine amount of lines..";
+        return 0;
+    }
+
+    cout << endl << "******Ending Coding 05 - Hash Tables******" << endl;
     return 0;
 }
