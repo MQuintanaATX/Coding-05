@@ -9,7 +9,7 @@ Notes: Servers as the interface for the main Hashing table
 #define CODING_05_HASHING_H
 
 #include <string>
-
+#include <iostream>
 using namespace std;
 /*
  * Structure Definition
@@ -24,8 +24,12 @@ class Hashing {
 private:
     Node* hashtable[19];
 public:
+    Hashing();
     bool isEmpty();
     bool add(int, string);
+
+    //debug method
+    void print();
 };
 
 

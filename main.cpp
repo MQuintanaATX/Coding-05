@@ -7,7 +7,7 @@ Notes: Implementation file serving as the main driver for the program
 #include "main.h"
 
 int main (int argc,char** argv) {
-    cout << "******Beginning Coding 05 - Hash Tables******";
+    cout << "******Beginning Coding 05 - Hash Tables******" << endl;
     /*Handles the initial parameters passed in*/
     if (argc != 2) { //Checks for additional arguments that are not intended
         cout <<  "You have specified too many or too few arguments. Please try again.";
@@ -38,7 +38,7 @@ int main (int argc,char** argv) {
     filename.clear();
     filename.seekg(0);
 
-    cout << " > Now loading data into hash table" << endl;
+    cout << endl << endl << "> Now loading data into hash table" << endl;
     int counter;
     while (!filename.eof()) {
         string fileString, container; // Container is used to parse data
@@ -59,8 +59,10 @@ int main (int argc,char** argv) {
                 data = container;
             }
         }
-        cout << id << ", " << container << endl;
-
+        cout << id << ", " << container << " | table.add() = ";
+        cout << table.add(id, data);
+        cout << " | table.isEmpty() = ";
+        cout << table.isEmpty() << endl;
     }
 
     cout << endl << "******Ending Coding 05 - Hash Tables******" << endl;
