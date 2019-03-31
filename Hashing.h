@@ -20,5 +20,13 @@ struct Node {
     Node *forward;
 };
 
+class Hashing {
+private:
+    Node* hashtable[19];
+public:
+    bool isEmpty();
+
+};
+
 
 #endif //CODING_05_HASHING_H

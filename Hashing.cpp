@@ -6,3 +6,12 @@ Notes:   Implementation file for the hash table class
 ************************************************************************ */
 
 #include "Hashing.h"
+
+bool Hashing::isEmpty() { //checks to see if the hash table is empt
+    for (int i; i <=20; i++) {
+        if (hashtable[i] != nullptr){
+            return false;
+        }
+    }
+    return true;
+}
