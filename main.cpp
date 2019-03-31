@@ -7,6 +7,7 @@ Notes: Implementation file serving as the main driver for the program
 #include "main.h"
 
 int main (int argc,char** argv) {
+    cout << "******Beginning Coding 05 - Hash Tables******"
     /*Handles the initial parameters passed in*/
     if (argc != 2) { //Checks for additional arguments that are not intended
         cout <<  "You have specified too many or too few arguments. Please try again.";
@@ -20,7 +21,11 @@ int main (int argc,char** argv) {
     if (!filename) {
         cout << "There is no file named : " << userInput << ". Please check for the file, and try again." << endl;
     }
-
-    cout << "Ending Coding 05 - Hash Tables..." << endl;
+    Hashing table;
+    cout << boolalpha;
+    cout << "table.isEmpty - ";
+    cout << table.isEmpty();
+    cout << endl;
+    cout << "******Ending Coding 05 - Hash Tables******" << endl;
     return 0;
 }
