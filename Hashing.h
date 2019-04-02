@@ -27,9 +27,11 @@ public:
     Hashing();
     bool isEmpty();
     bool add(int, string);
+    bool contains (int);
 
-    //debug method
-    void print();
+    //debug methods
+    void printAddress();
+    void printValues();
 };
 
 

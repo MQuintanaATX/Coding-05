@@ -55,15 +55,28 @@ int main (int argc,char** argv) {
             } else if (fileString[i] == ','){
                 id = stoi(container);
                 container = "";
-            } else if(fileString[i] == '\0'){
-                data = container;
             }
         }
         cout << id << ", " << container << " | table.add() = ";
-        cout << table.add(id, data);
+        cout << table.add(id, container);
         cout << " | table.isEmpty() = ";
         cout << table.isEmpty() << endl;
     }
+    table.printValues();
+
+    cout << endl << "> Finding values" << endl;
+    //Searching for values in the 1st, 2nd, and 3rd parts of the chain
+    cout << "Contains 131: ";
+    cout << table.contains(131) << endl;
+    cout << "Contains 238: ";
+    cout << table.contains(238) << endl;
+    cout << "Contains 195: ";
+    cout << table.contains(195) << endl;
+    cout << "Contains 1: ";
+    cout << table.contains(1) << endl;
+    cout << "Contains 922: ";
+    cout << table.contains(922) << endl;
+
 
     cout << endl << "******Ending Coding 05 - Hash Tables******" << endl;
     return 0;

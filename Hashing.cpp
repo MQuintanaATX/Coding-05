@@ -22,13 +22,13 @@ bool Hashing::isEmpty() { //checks to see if the hash table is empty
     return true;
 }
 
-bool Hashing::add(int value, string string) { //adds entries to the able
+bool Hashing::add(int value, string data) { //adds entries to the able
     int index = -1;
     Node* temp = new Node;
     Node* nullchecker = new Node;
     Node* previous = new Node;
     temp->id = value;
-    temp->data = string;
+    temp->data = data;
     temp->forward = nullptr;
     index =  value % 19;
     nullchecker = hashtable[index];
@@ -41,20 +41,52 @@ bool Hashing::add(int value, string string) { //adds entries to the able
         nullchecker = nullchecker->forward;
     }if (nullchecker == nullptr){
         nullchecker = temp;
-        previous->forward = nullchecker;
-        nullchecker->forward = nullptr;
+        previous->forward = temp;
+        temp->forward = nullptr;
         return true;
+    }
+    throw "false";
+}
+
+bool Hashing::contains(int value) {
+    Node* temp = new Node;
+    for (int i =0; i < 19; i++) {
+        temp = hashtable[i];
+        while (temp != nullptr){
+            if (temp->id == value){
+                return true;
+            }
+            temp = temp ->forward;
+        }
     }
     return false;
 }
 
 /*
- * Debug methods - used for troubleshooting program. COmmented out for submission
+ * Debug methods - used for troubleshooting program. Commented out for submission
  */
-/*
-void Hashing::print() {
+
+void Hashing::printAddress(){
     for (int i =0; i < 19; i++) {
         cout << hashtable[i] << endl;
     }
 };
-*/
+
+void Hashing::printValues() {
+    int counter = 0;
+    Node* temp = new Node;
+    for (int i =0; i < 19; i++) {
+        temp = hashtable[i];
+        cout << hashtable[i] << endl;
+        while (temp != nullptr){
+            cout << temp->id << ", " << temp->data;
+            cout << " -> ";
+            temp = temp ->forward;
+            counter++;
+        }
+        cout << endl;
+
+    }
+    cout << "Total: " << counter << endl;
+}
+
