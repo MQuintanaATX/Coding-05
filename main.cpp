@@ -91,6 +91,13 @@ int main (int argc,char** argv) {
     cout << "Contains 922: ";
     cout << table.getData(922) << endl;
 
+    cout << endl << "> Deleting values" << endl;
+    cout << "Deleting 115: ";
+    cout << table.remove(115);
+    cout << endl;
+    table.printValues();
+    cout << "# of Entries: " << table.getCountEntries();
+
 
     cout << endl << "******Ending Coding 05 - Hash Tables******" << endl;
     return 0;

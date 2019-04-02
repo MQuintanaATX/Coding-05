@@ -81,9 +81,35 @@ int Hashing::getCountEntries() {
 }
 
 bool Hashing::remove (int value){
-    int index = -1;
-    bool found = false;
-    return false;
+    Node* temp = new Node;
+    Node* previous = new Node;
+    bool removed = false;
+    int index = value % 19;
+    if (hashtable[index]->id == value){
+        hashtable[index] = nullptr;
+        removed = true;
+        counter--;
+        return removed;
+    }
+    temp = hashtable[index];
+    while (temp != nullptr){
+        if (temp->id == value){
+            if (temp->forward == nullptr) {
+                temp = nullptr;
+                removed = true;
+                counter--;
+            } else {
+                previous->forward = temp;
+                temp->forward->forward = previous;
+                removed = true;
+                counter--;
+            }
+            return removed;
+        }
+        previous = temp;
+        temp = temp ->forward;
+    }
+    return removed;
 }
 
 
@@ -91,7 +117,6 @@ bool Hashing::remove (int value){
 /*
  * Debug methods - used for troubleshooting program. Commented out for submission
  */
-
 void Hashing::printAddress(){
     for (int i =0; i < 19; i++) {
         cout << hashtable[i] << endl;
