@@ -52,28 +52,26 @@ bool Hashing::add(int value, string data) { //adds entries to the able
 
 bool Hashing::contains(int value) {
     Node* temp = new Node;
-    for (int i =0; i < 19; i++) {
-        temp = hashtable[i];
-        while (temp != nullptr){
-            if (temp->id == value){
-                return true;
-            }
-            temp = temp ->forward;
+    int index = value % 19;
+    temp = hashtable[index];
+    while (temp != nullptr) {
+        if (temp->id == value) {
+            return true;
         }
+        temp = temp->forward;
     }
     return false;
 }
 
 string Hashing::getData(int value){
     Node* temp = new Node;
-    for (int i =0; i < 19; i++) {
-        temp = hashtable[i];
-        while (temp != nullptr){
-            if (temp->id == value){
-                return temp->data;
-            }
-            temp = temp ->forward;
+    int index = value % 19;
+    temp = hashtable[index];
+    while (temp != nullptr){
+        if (temp->id == value){
+            return temp->data;
         }
+        temp = temp ->forward;
     }
     return "NOT FOUND";
 }
@@ -81,6 +79,15 @@ string Hashing::getData(int value){
 int Hashing::getCountEntries() {
     return counter;
 }
+
+bool Hashing::remove (int value){
+    int index = -1;
+    bool found = false;
+    return false;
+}
+
+
+
 /*
  * Debug methods - used for troubleshooting program. Commented out for submission
  */

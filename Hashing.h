@@ -31,6 +31,7 @@ public:
     bool contains (int);
     string getData(int);
     int getCountEntries();
+    bool remove (int);
 
     //debug methods
     void printAddress();
