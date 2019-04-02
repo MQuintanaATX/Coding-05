@@ -23,11 +23,14 @@ struct Node {
 class Hashing {
 private:
     Node* hashtable[19];
+    int counter;
 public:
     Hashing();
     bool isEmpty();
     bool add(int, string);
     bool contains (int);
+    string getData(int);
+    int getCountEntries();
 
     //debug methods
     void printAddress();

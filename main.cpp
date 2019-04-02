@@ -63,6 +63,7 @@ int main (int argc,char** argv) {
         cout << table.isEmpty() << endl;
     }
     table.printValues();
+    cout << "# of Entries: " << table.getCountEntries();
 
     cout << endl << "> Finding values" << endl;
     //Searching for values in the 1st, 2nd, and 3rd parts of the chain
@@ -76,6 +77,19 @@ int main (int argc,char** argv) {
     cout << table.contains(1) << endl;
     cout << "Contains 922: ";
     cout << table.contains(922) << endl;
+
+    cout << endl << "> Retrieving values" << endl;
+    //Searching for values in the 1st, 2nd, and 3rd parts of the chain
+    cout << "Contains 131: ";
+    cout << table.getData(131) << endl;
+    cout << "Contains 238: ";
+    cout << table.getData(238) << endl;
+    cout << "Contains 195: ";
+    cout << table.getData(195) << endl;
+    cout << "Contains 1: ";
+    cout << table.getData(1) << endl;
+    cout << "Contains 922: ";
+    cout << table.getData(922) << endl;
 
 
     cout << endl << "******Ending Coding 05 - Hash Tables******" << endl;

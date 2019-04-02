@@ -34,6 +34,7 @@ bool Hashing::add(int value, string data) { //adds entries to the able
     nullchecker = hashtable[index];
     if (nullchecker == nullptr) {
         hashtable[index] = temp;
+        counter++;
         return true;
     }
     while (nullchecker!= nullptr) {
@@ -43,6 +44,7 @@ bool Hashing::add(int value, string data) { //adds entries to the able
         nullchecker = temp;
         previous->forward = temp;
         temp->forward = nullptr;
+        counter++;
         return true;
     }
     throw "false";
@@ -62,6 +64,23 @@ bool Hashing::contains(int value) {
     return false;
 }
 
+string Hashing::getData(int value){
+    Node* temp = new Node;
+    for (int i =0; i < 19; i++) {
+        temp = hashtable[i];
+        while (temp != nullptr){
+            if (temp->id == value){
+                return temp->data;
+            }
+            temp = temp ->forward;
+        }
+    }
+    return "NOT FOUND";
+}
+
+int Hashing::getCountEntries() {
+    return counter;
+}
 /*
  * Debug methods - used for troubleshooting program. Commented out for submission
  */
@@ -73,7 +92,6 @@ void Hashing::printAddress(){
 };
 
 void Hashing::printValues() {
-    int counter = 0;
     Node* temp = new Node;
     for (int i =0; i < 19; i++) {
         temp = hashtable[i];
@@ -82,7 +100,6 @@ void Hashing::printValues() {
             cout << temp->id << ", " << temp->data;
             cout << " -> ";
             temp = temp ->forward;
-            counter++;
         }
         cout << endl;
 
