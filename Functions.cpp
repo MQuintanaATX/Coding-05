@@ -20,3 +20,7 @@ int countLines(ifstream& filename) { // Obtains # of valid lines in a file
     }
     return count;
 }
+
+int randomInt() {//generates a random int for testing
+    return rand() % 899 + 100;
+}

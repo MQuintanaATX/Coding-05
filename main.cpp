@@ -78,7 +78,7 @@ int main (int argc,char** argv) {
     cout << "Contains 922: ";
     cout << table.contains(922) << endl;
 
-    cout << endl << "> Retrieving values" << endl;
+    cout << endl << "> Retrieving data" << endl;
     //Searching for values in the 1st, 2nd, and 3rd parts of the chain
     cout << "Contains 131: ";
     cout << table.getData(131) << endl;
@@ -98,8 +98,31 @@ int main (int argc,char** argv) {
     cout << table.remove(238) << endl;
     cout << "Deleting 195: ";
     cout << table.remove(195) << endl;
-    table.printValues();
     cout << "# of Entries: " << table.getCountEntries();
+
+    cout << endl << ">Automated, high volume testing" << endl;
+    //Tests all of the previous entered values in data csv for removal.
+    int testarray[] = {100, 108, 117, 129, 157, 205, 155, 131, 156,
+                       195, 115, 208, 132, 777,  991, 485, 828, 238, 555, 941};
+    int testint = 0;
+    for (int i = 0; i < 400; i++) {
+        if (i < 19){
+            testint = testarray[i];
+        } else {
+            testint = randomInt();
+        }
+        cout << "Contains " << testint << ": ";
+        cout << table.contains(testint) << endl;
+        if (i < 10) {
+            cout << "Contains " << testint << ": ";
+            cout << table.contains(testint) << endl;
+            cout << "Data is " << testint << ": ";
+            cout << table.getData(testint) << endl;
+            cout << "Deleting " << testint << ": ";
+            cout << table.remove(testint) << endl;
+            cout << "# of Entries: " << table.getCountEntries() << endl << endl;
+        }
+    }
 
 
     cout << endl << "******Ending Coding 05 - Hash Tables******" << endl;
