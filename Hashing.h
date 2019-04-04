@@ -36,6 +36,7 @@ public:
     //debug methods
     void printAddress();
     void printValues();
+    void clear();
 };
 
 

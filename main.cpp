@@ -3,6 +3,7 @@ Name: Michael Quintana
 Assignment: Coding 05 - Hash Tables
 Purpose: Implementation - main
 Notes: Implementation file serving as the main driver for the program
+ Change the value in line 400 to determine number of loops
 ************************************************************************ */
 #include "main.h"
 
@@ -22,20 +23,26 @@ int main (int argc,char** argv) {
     if (!filename) {
         cout << "There is no file named : " << userInput << ". Please check for the file, and try again." << endl;
     }
-    Hashing table; //The hash table
     int lineCount = 0; //holds the tally of lines in the file
-    cout << boolalpha;
-    cout << "table.isEmpty - ";
-    cout << table.isEmpty();
-    cout << endl << "> Number of table entries | ";
     try {
         lineCount = countLines(filename);
+        if (lineCount == 0) {
+            cout <<  "THere is no data in your file. Please try again." << endl;
+            return -1;
+        }
         cout << lineCount;
     }
     catch (...){
         cout << "An error occured. Unable to determmine amount of lines..";
         return 0;
     }
+
+    Hashing table; //The hash table
+    cout << boolalpha;
+    cout << "table.isEmpty - ";
+    cout << table.isEmpty();
+    cout << endl << "> Number of table entries | ";
+
     filename.clear();
     filename.seekg(0);
 
@@ -63,7 +70,6 @@ int main (int argc,char** argv) {
         cout << " | table.isEmpty() = ";
         cout << table.isEmpty() << endl;
     }
-    table.printValues();
     cout << "# of Entries: " << table.getCountEntries();
 
     cout << endl << "> Finding values" << endl;
@@ -100,14 +106,13 @@ int main (int argc,char** argv) {
     cout << "Deleting 195: ";
     cout << table.remove(195) << endl;
     cout << "# of Entries: " << table.getCountEntries();
-    table.printValues();
 
     cout << endl << ">Automated, high volume testing" << endl;
     //Tests all of the previous entered values in data csv for removal.
     int testarray[] = {100, 108, 117, 129, 157, 205, 155, 131, 156,
                        195, 115, 208, 132, 777,  991, 485, 828, 238, 555, 941};
     int testint = 0;
-    for (int i = 0; i < 1000; i++) {
+    for (int i = 0; i < 40; i++) {
         if (i < 20){ //Ensures deletion testing of all original values
             testint = testarray[i];
         } else { // assignes a random int once past that
@@ -144,7 +149,14 @@ int main (int argc,char** argv) {
             cout << "# of Entries: " << table.getCountEntries() << endl << endl;
         }
     }
-    cout << "Clearing table..."
+    cout << "Clearing table..." << endl << endl;
+    table.clear();
+    cout << "Verifying table clear: " << endl;
+    for (int i = 0; i < 3; i++){
+        cout << "Contains " << testarray[i] << ": ";
+        cout << table.contains(testarray[i]) << endl;
+        cout << "# of Entries: " << table.getCountEntries() << endl << endl;
+    }
 
 
     cout << endl << "******Ending Coding 05 - Hash Tables******" << endl;

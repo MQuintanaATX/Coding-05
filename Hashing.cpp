@@ -80,11 +80,7 @@ int Hashing::getCountEntries() {
     return counter;
 }
 
-/*
- * MQ Note: you left off here!
- * Gotta figure out the removal
- *
- */
+
 bool Hashing::remove (int value){
     if (contains(value) != true){
         return false;
@@ -125,7 +121,12 @@ bool Hashing::remove (int value){
     return false;
 }
 
-
+void Hashing::clear() {
+    for (int i =0; i < 19; i++) {
+        hashtable[i] = nullptr;
+    }
+    counter = 0;
+}
 
 /*
  * Debug methods - used for troubleshooting program. Commented out for submission

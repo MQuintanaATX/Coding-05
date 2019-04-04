@@ -14,7 +14,7 @@ int countLines(ifstream& filename) { // Obtains # of valid lines in a file
     while (getline(filename, contents)){
         // if that line is empty, skips that line. This allows for parsing of files with bank lines
         if (contents == "\0"){
-            continue;
+            return -1;
         }
         count++;
     }
