@@ -93,8 +93,11 @@ int main (int argc,char** argv) {
 
     cout << endl << "> Deleting values" << endl;
     cout << "Deleting 115: ";
-    cout << table.remove(115);
-    cout << endl;
+    cout << table.remove(115) << endl;
+    cout << "Deleting 238: ";
+    cout << table.remove(238) << endl;
+    cout << "Deleting 195: ";
+    cout << table.remove(195) << endl;
     table.printValues();
     cout << "# of Entries: " << table.getCountEntries();
 

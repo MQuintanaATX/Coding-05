@@ -80,36 +80,40 @@ int Hashing::getCountEntries() {
     return counter;
 }
 
+/*
+ * MQ Note: you left off here!
+ * Gotta figure out the removal
+ *
+ */
 bool Hashing::remove (int value){
     Node* temp = new Node;
     Node* previous = new Node;
-    bool removed = false;
+    previous = nullptr;
     int index = value % 19;
-    if (hashtable[index]->id == value){
+    //handles the head case; guards against the rest of a chain getting nuked
+    if (hashtable[index]->id == value and hashtable[index]->forward == nullptr){
         hashtable[index] = nullptr;
-        removed = true;
         counter--;
-        return removed;
+        return true;
     }
-    temp = hashtable[index];
+    previous = hashtable[index];
+    temp = hashtable[index]->forward;
     while (temp != nullptr){
         if (temp->id == value){
-            if (temp->forward == nullptr) {
-                temp = nullptr;
-                removed = true;
+            if (temp->forward != nullptr) { // Handles mid cases
+                previous->forward = temp->forward;
                 counter--;
-            } else {
-                previous->forward = temp;
-                temp->forward->forward = previous;
-                removed = true;
+            } else if (temp->forward == nullptr) {
+                previous->forward = nullptr;
                 counter--;
+                return false;
             }
-            return removed;
+            return true;
         }
         previous = temp;
         temp = temp ->forward;
     }
-    return removed;
+    return false;
 }
 
 
