@@ -86,15 +86,24 @@ int Hashing::getCountEntries() {
  *
  */
 bool Hashing::remove (int value){
+    if (contains(value) != true){
+        return false;
+    }
     Node* temp = new Node;
     Node* previous = new Node;
     previous = nullptr;
     int index = value % 19;
-    //handles the head case; guards against the rest of a chain getting nuked
-    if (hashtable[index]->id == value and hashtable[index]->forward == nullptr){
-        hashtable[index] = nullptr;
-        counter--;
-        return true;
+    //handles the head cases; guards against the rest of a chain getting nuked
+    if (hashtable[index]->id == value ){
+        if (hashtable[index]->forward == nullptr){ //Clears the node if it's the only one
+            hashtable[index] = nullptr;
+            counter--;
+            return true;
+        } else { //Chains the next one
+            hashtable[index] = hashtable[index]->forward;
+            counter--;
+            return true;
+        }
     }
     previous = hashtable[index];
     temp = hashtable[index]->forward;
@@ -103,12 +112,12 @@ bool Hashing::remove (int value){
             if (temp->forward != nullptr) { // Handles mid cases
                 previous->forward = temp->forward;
                 counter--;
+                return true;
             } else if (temp->forward == nullptr) {
                 previous->forward = nullptr;
                 counter--;
-                return false;
+                return true;
             }
-            return true;
         }
         previous = temp;
         temp = temp ->forward;

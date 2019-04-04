@@ -7,6 +7,7 @@ Notes: Implementation file serving as the main driver for the program
 #include "main.h"
 
 int main (int argc,char** argv) {
+    srand (time(NULL));
     cout << "******Beginning Coding 05 - Hash Tables******" << endl;
     /*Handles the initial parameters passed in*/
     if (argc != 2) { //Checks for additional arguments that are not intended
@@ -99,21 +100,20 @@ int main (int argc,char** argv) {
     cout << "Deleting 195: ";
     cout << table.remove(195) << endl;
     cout << "# of Entries: " << table.getCountEntries();
+    table.printValues();
 
     cout << endl << ">Automated, high volume testing" << endl;
     //Tests all of the previous entered values in data csv for removal.
     int testarray[] = {100, 108, 117, 129, 157, 205, 155, 131, 156,
                        195, 115, 208, 132, 777,  991, 485, 828, 238, 555, 941};
     int testint = 0;
-    for (int i = 0; i < 400; i++) {
-        if (i < 19){
+    for (int i = 0; i < 1000; i++) {
+        if (i < 20){ //Ensures deletion testing of all original values
             testint = testarray[i];
-        } else {
+        } else { // assignes a random int once past that
             testint = randomInt();
         }
-        cout << "Contains " << testint << ": ";
-        cout << table.contains(testint) << endl;
-        if (i < 10) {
+        if (i <= 20) {
             cout << "Contains " << testint << ": ";
             cout << table.contains(testint) << endl;
             cout << "Data is " << testint << ": ";
@@ -121,8 +121,30 @@ int main (int argc,char** argv) {
             cout << "Deleting " << testint << ": ";
             cout << table.remove(testint) << endl;
             cout << "# of Entries: " << table.getCountEntries() << endl << endl;
+            //Ensures that every  other loop  tests removal. Helps build a list for clear
+            //Also checks to ensure the list isn't added in a lopsided method.
+            //Should only ever have (n/2) - 10 cases
+        }  else if (i % 2 == 0){
+            cout << "Adding " << testint << ": ";
+            cout << table.add(testint, "Test " + to_string(testint)) << endl;
+            cout << "Contains " << testint << ": ";
+            cout << table.contains(testint) << endl;
+            cout << "Data is " << testint << ": ";
+            cout << table.getData(testint) << endl;
+            cout << "Deleting " << testint << ": ";
+            cout << table.remove(testint) << endl;
+            cout << "# of Entries: " << table.getCountEntries() << endl << endl;
+        } else {
+            cout << "Adding " << testint << ": ";
+            cout << table.add(testint, "Test " + to_string(testint)) << endl;
+            cout << "Contains " << testint << ": ";
+            cout << table.contains(testint) << endl;
+            cout << "Data is " << testint << ": ";
+            cout << table.getData(testint) << endl;
+            cout << "# of Entries: " << table.getCountEntries() << endl << endl;
         }
     }
+    cout << "Clearing table..."
 
 
     cout << endl << "******Ending Coding 05 - Hash Tables******" << endl;
