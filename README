@@ -1,0 +1,7 @@
+Hash Table w/ Seperate Chaining 
+
+Motivation
+  This program contains a hash table that resolves collisions through Seperate Chaining.
+  
+Status
+  Project is currently in a finished state
